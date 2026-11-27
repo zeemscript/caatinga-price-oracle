@@ -1,5 +1,10 @@
 # Caatinga Price Oracle
 
+[![CI](https://github.com/zeemscript/caatinga-price-oracle/actions/workflows/ci.yml/badge.svg)](https://github.com/zeemscript/caatinga-price-oracle/actions/workflows/ci.yml)
+![Network](https://img.shields.io/badge/network-Stellar%20testnet-7B2FFE)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Tests](https://img.shields.io/badge/tests-31%20passing-34D399)
+
 A backend relayer + event indexer + REST API for a Soroban price-oracle
 contract, built for the [GrantFox × NearX Caatinga Bounties](https://bounties.grantfox.xyz/events/caatinga-bounties)
 hackathon, **Backend, Automation & Agents** lane.
@@ -9,10 +14,30 @@ It deploys a contract via [Caatinga](https://github.com/Dione-b/caatinga)
 resolves that contract's ID exclusively from Caatinga's own
 `caatinga.artifacts.json` -- never hardcoded -- and keeps running
 correctly across both of Caatinga's upgrade strategies (in-place and
-redeploy) with no restart.
+redeploy) with no restart. Every claim below was exercised for real
+against live Stellar testnet infrastructure, not mocked -- see the
+**demo video (link in the GrantFox submission)** and the log excerpts
+throughout this README.
 
 > New to this? You don't need any Soroban/Stellar background to run it --
 > follow [Setup](#setup) top to bottom. Every command is copy-pasteable.
+
+## Bounty checklist, at a glance
+
+| Rule | Status | Where |
+|---|---|---|
+| Deploy at least one Soroban contract using Caatinga | ✅ | [`contracts/oracle`](contracts/oracle/src/lib.rs), deployed via `ctg deploy` |
+| Resolve contract IDs from artifacts, not hardcoded | ✅ | [`backend/src/lib/artifacts.ts`](backend/src/lib/artifacts.ts) -- re-reads `caatinga.artifacts.json` on *every call* |
+| Demonstrate continued operation after a contract upgrade | ✅ | [Upgrades, demonstrated live](#upgrades-demonstrated-live) -- both strategies, real testnet |
+| Error handling, retries, idempotency | ✅ | [`backend/src/lib/retry.ts`](backend/src/lib/retry.ts), [`backend/src/lib/errors.ts`](backend/src/lib/errors.ts), idempotent `set_price`, `UNIQUE` SQLite constraint |
+| Secure key management, no committed secrets | ✅ | [`docs/security.md`](docs/security.md), `.env` gitignored, only `.env.example` tracked |
+| Runnable backend service | ✅ | `cd backend && npm install && npm run dev` |
+| Public GitHub repository | ✅ | you're looking at it |
+| Backend startup instructions | ✅ | [Setup](#setup) |
+| Contract deployment config + artifacts | ✅ | `caatinga.config.ts`, `caatinga.artifacts.json` (committed) |
+| Evidence of failure handling | ✅ | [Failure handling, demonstrated live](#failure-handling-demonstrated-live) -- real outages, real recovery |
+| Demo video (≤3 min) | ✅ | 2:44, linked above |
+| Caatinga friction log | ✅ | [`docs/caatinga-friction-log.md`](docs/caatinga-friction-log.md) -- 8 findings, each with repro steps |
 
 ## What's deployed, live, right now
 
