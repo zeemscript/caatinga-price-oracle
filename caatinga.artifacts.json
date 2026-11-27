@@ -1,0 +1,62 @@
+{
+  "project": "caatinga-price-oracle",
+  "networks": {
+    "testnet": {
+      "contracts": {
+        "oracle": {
+          "contractId": "CBTT7OWFCUSU2UQBFVQV5MR3EDS7JJUDITUXPDZU7GGM7DLCZVKLTAML",
+          "wasmHash": "b9f2f116bede051e0ac49bc5478f04ae6428ed88e5f7ce9c3f4fb4539c5ab9b9",
+          "deployedAt": "2026-11-27T21:14:15.579Z",
+          "sourcePath": "./contracts/oracle",
+          "wasmPath": "./contracts/oracle/target/wasm32v1-none/release/oracle.wasm",
+          "dependencies": [],
+          "resolvedDeployArgs": {},
+          "history": [
+            {
+              "contractId": "CA63P6GYMAIHRUY65FQJFEH2IKCL5FAZH6Q5YHJDZDG74C76HFJOMZHN",
+              "wasmHash": "a4f74288d758a20e434db9e9926bf8919547fc871e20defe07249005f806a202",
+              "deployedAt": "2026-11-27T20:52:35.231Z",
+              "supersededAt": "2026-11-27T21:12:04.877Z",
+              "reason": "upgrade",
+              "upgradeType": "new-contract",
+              "metadata": {
+                "rustcVersion": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+                "caatingaVersion": "3.14.0",
+                "network": "testnet",
+                "timestamp": "2026-11-27T20:52:35.229Z",
+                "checksum": "a4f74288d758a20e434db9e9926bf8919547fc871e20defe07249005f806a202"
+              }
+            },
+            {
+              "contractId": "CBTT7OWFCUSU2UQBFVQV5MR3EDS7JJUDITUXPDZU7GGM7DLCZVKLTAML",
+              "wasmHash": "62eefc6c0befa2445be7f4cf2db91f11f371616be66ea22a31bb3243df63a2a9",
+              "deployedAt": "2026-11-27T21:12:04.877Z",
+              "supersededAt": "2026-11-27T21:14:15.581Z",
+              "reason": "upgrade",
+              "upgradeType": "in-place",
+              "metadata": {
+                "rustcVersion": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+                "caatingaVersion": "3.14.0",
+                "network": "testnet",
+                "timestamp": "2026-11-27T21:12:04.876Z",
+                "checksum": "62eefc6c0befa2445be7f4cf2db91f11f371616be66ea22a31bb3243df63a2a9"
+              }
+            }
+          ],
+          "upgradeStrategy": "in-place",
+          "metadata": {
+            "rustcVersion": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+            "caatingaVersion": "3.14.0",
+            "network": "testnet",
+            "timestamp": "2026-11-27T21:14:15.579Z",
+            "checksum": "b9f2f116bede051e0ac49bc5478f04ae6428ed88e5f7ce9c3f4fb4539c5ab9b9"
+          }
+        }
+      },
+      "dependencyGraph": {
+        "oracle": []
+      }
+    }
+  },
+  "version": 2
+}

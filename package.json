@@ -1,0 +1,21 @@
+{
+  "name": "caatinga-price-oracle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "ctg build oracle",
+    "deploy": "ctg deploy --source ${CAATINGA_SOURCE:-alice}",
+    "upgrade": "ctg upgrade oracle --source ${CAATINGA_SOURCE:-alice}",
+    "doctor": "ctg doctor",
+    "test": "cargo test --manifest-path contracts/oracle/Cargo.toml",
+    "read:version": "ctg read oracle.version --source ${CAATINGA_SOURCE:-alice}"
+  },
+  "devDependencies": {
+    "@caatinga/cli": "^3.14.0",
+    "@caatinga/core": "^3.14.0"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3"
+  }
+}
